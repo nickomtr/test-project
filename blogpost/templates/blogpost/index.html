@@ -82,19 +82,18 @@
           </ul>
         </div>
       </nav>
-  
+
       <main role="main">
         <div class="row">
-        {%for item in events.all%}
+        {%for object in posts.all%}
           <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" src="media/{{item.event_image}}" />
+                <img class="card-img-top" src="media/{{object.post_image.url}}" />
               <div class="card-body">
-                <p class="card-text">{{item.event_text}}.</p>
+                <a class="card-text" href="{ % url 'post_opened' object.id % }" >{{object.post_title}}</a>
 
               </div>
             </div>
-        
           </div>
         {%endfor%}
 
