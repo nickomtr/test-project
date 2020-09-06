@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+      {%               load static            %}
     <style>
         .bd-placeholder-img {
           font-size: 1.125rem;
@@ -74,6 +75,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="https://steamcommunity.com/market/search?appid=730">Market</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% static 'file.txt' %}">Загрузки</a>
             </li>
             
             <li class="nav-item">

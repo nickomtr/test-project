@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+      {%               load static            %}
     <style>
         .bd-placeholder-img {
           font-size: 1.125rem;
@@ -90,7 +91,7 @@
             <div class="card mb-4 shadow-sm">
                 <img class="card-img-top" src="{{object.post_image.url}}" />
               <div class="card-body">
-                <a class="card-text" href="{ % url 'post_opened' object.id % }" >{{object.post_title}}</a>
+                <a class="card-text" href="{% url 'post_opened' object.id %}" >{{object.post_title}}</a>
                 <!--перевод даты на русский-->
                 {% load i18n %}
                 {% language 'ru' %}

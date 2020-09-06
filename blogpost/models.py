@@ -5,3 +5,8 @@ class PostText(models.Model):
     post_text = models.CharField(max_length=300)
     post_date = models.DateTimeField()
     post_title =  models.CharField(max_length=10)
+
+
+    def __str__(self):
+        return self.post_title
+    
