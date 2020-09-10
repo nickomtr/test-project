@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-      {%               load static            %}
-    <style>
+
+        <style>
         .bd-placeholder-img {
           font-size: 1.125rem;
           text-anchor: middle;
@@ -71,14 +71,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="http://127.0.0.1:8000/blog/">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="http://127.0.0.1:8000/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="https://steamcommunity.com/market/search?appid=730">Market</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="http://127.0.0.1:8000/blog/newpost/">Add</a>
-            </li>
+                <a class="nav-link" href="http://127.0.0.1:8000/blog/newpost/">Add</a>
+              </li>
             
             <li class="nav-item">
               <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Private</a>
@@ -86,31 +86,14 @@
           </ul>
         </div>
       </nav>
-
-      <main role="main">
-        <div class="row">
-        {%for object in posts.all%}
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" src="{{object.post_image.url}}" />
-              <div class="card-body">
-                <a class="card-text" href="{% url 'post_opened' object.id %}" >{{object.post_title}}</a>
-                <!--перевод даты на русский-->
-                {% load i18n %}
-                {% language 'ru' %}
-                <p class="text-muted">{{ object.post_date|date:'D, d N H:i:s' }}</p>
-                {% endlanguage %}
-              </div>
-            </div>
-          </div>
-        {%endfor%}
-
-  
-
-  
-
-  
-  </main>
+      {% block content %}
+      <h1>New post</h1>
+    <form method="POST" class="post-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+      {% endblock %}
 </body>
 </html>
 
