@@ -13,15 +13,13 @@ def post(request, post_id):
     return render(request, 'blogpost/post-opened.html', {'posts':currentpost})
 def new_post(request):
     if request.method == 'POST':
-        form = FormPost(request.POST)
+        form = FormPost(request.POST, request.FILES)
         if form.is_valid():
-            print('1111111111111111111111111111111111')
             post = form.save(commit=False)
             post.post_date = timezone.now()
             post.save()
-            return redirect('')
+            return redirect('post_opened', post_id=post.id)
     else:
-        print('22222222222222222222222222222222222222')
         form = FormPost()
 
 
