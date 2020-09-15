@@ -17,10 +17,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
-import eventapp.views
-
+from . import views
+#from django.contrib.auth.views import logout
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', eventapp.views.home),
-    path('blog/', include('blogpost.urls'))
+    path('', views.home),
+    #path('blog/', include('blogpost.urls')),
+    path('', include('social_django.urls', namespace = 'social')),
+    #path('logout/', logout, {'next_page': settings.LOGOUT_REDIRECT_URL},name='logout')
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

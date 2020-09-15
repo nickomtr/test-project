@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-      {%               load static            %}
-    <style>
+        {%               load static            %}
+        <style>
         .bd-placeholder-img {
           font-size: 1.125rem;
           text-anchor: middle;
@@ -77,37 +77,21 @@
               <a class="nav-link" href="https://steamcommunity.com/market/search?appid=730">Market</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% static 'file.txt' %}">Загрузки</a>
+              <a class="nav-link" href="http://127.0.0.1:8000/blog/newpost/">Add</a>
             </li>
             
             <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Private</a>
+              <a class="nav-link" href="{% url 'social:begin' 'google-oauth2' %}" tabindex="-1">Login</a>
             </li>
           </ul>
         </div>
       </nav>
-  
-      <main role="main">
-        <div class="row">
-        {%for item in events.all%}
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" src="media/{{item.event_image}}" />
-              <div class="card-body">
-                <p class="card-text">{{item.event_text}}.</p>
+      {% if user.is_authenticated %}
+        <p style=" position:absolute; left: 30% top:50%;">Ваше имя {{ user.username }}</p>
+      {% else %}
+      <p>ВЫ НЕ АУТИФИЦИИРОВАННЫ ДОСТУП ЗАКАЗАН!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
 
-              </div>
-            </div>
-        
-          </div>
-        {%endfor%}
-
-  
-
-  
-
-  
-  </main>
+      {% endif %}
 </body>
 </html>
 

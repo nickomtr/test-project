@@ -39,8 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'eventapp.apps.EventappConfig',
-    'blogpost.apps.BlogpostConfig'
+    'blogpost.apps.BlogpostConfig',
+    'social_django'
+]
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend'
 ]
 
 MIDDLEWARE = [
@@ -52,6 +56,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+#OAuth2
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '717849055557-ns91bstk5bhn33473rgl8p3d5hgdaat0.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'hJy7oWtJsXHBs5WHBfYZKdxt'
+LOGIN_URL = '/auth/login/google-oauth2/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 ROOT_URLCONF = 'miniblock.urls'
 
